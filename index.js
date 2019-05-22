@@ -19,5 +19,8 @@ db.serialize(function(){
     db.each("SELECT name FROM Instructor",function(err,row){
         console.log(row);
     });
+    db.each("SELECT DISTINCT Dept_name FROM Instructor",function(err,row){
+        console.log(row.Dept_name);//row is an object so just to print dept name
+    });
 
     });
