@@ -28,8 +28,30 @@ db.serialize(function(){
     });
 
     db.each("SELECT name FROM Instructor WHERE Dept_name = 'IOS' AND salary > 70000",function(err,row){
-        console.log(row); //where clause usind AND
+        console.log(row.Name); //where clause with AND
     });
+
+    //where clause with AND a bit organized
+    //Instructor 1, Instructor 2 have a high salary.
+    let results =new Array();
+    db.each(
+        "SELECT name FROM Instructor WHERE Dept_name = 'IOS' AND salary > 70000",
+        function(err,row){
+            results.push(row.Name)
+        },
+        function(err,count){
+            let resultString = "";
+            for(let i = 0; i != results.length; i++){
+                if (i != count - 1) {
+                    resultString += results[i] + ", "
+                }
+                else
+                    resultString += results[i];
+            }
+            console.log(resultString + " have a high salary.");
+        }
+    );
+
 
     
 
