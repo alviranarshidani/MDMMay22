@@ -27,4 +27,10 @@ db.serialize(function(){
         console.log(row); //where clause
     });
 
+    db.each("SELECT name FROM Instructor WHERE Dept_name = 'IOS' AND salary > 70000",function(err,row){
+        console.log(row); //where clause usind AND
+    });
+
+    
+
     });
