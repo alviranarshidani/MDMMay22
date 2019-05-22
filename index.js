@@ -23,4 +23,8 @@ db.serialize(function(){
         console.log(row.Dept_name);//row is an object so just to print dept name
     });
 
+    db.each("SELECT salary FROM Instructor WHERE salary > 70000",function(err,row){
+        console.log(row); //where clause
+    });
+
     });
